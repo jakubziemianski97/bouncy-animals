@@ -6,19 +6,45 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Bouncy animals</title>
 		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet" />
+		<script src="https://kit.fontawesome.com/32a2bf73d9.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div class="wrapper">
 			<div id="game-field" class="game-field">
-				<div class="background"></div>
+				<div class="background">
+					<div class="background-shadow"></div>
+				</div>
 				<div class="animal"></div>
 				<div class="pipes">
 					<div class="bottom"></div>
 					<div class="top"></div>
 				</div>
 				<div class="result">
-					<p>Punkty:<p class="score">0</p></p>
-					
+					<p>Points:</p>
+					<p class="score">0</p>
+				</div>
+				<button class="settings-btn"><i class="fa-solid fa-gear"></i></button>
+				<div class="settings">
+					<h1>Settings</h1>
+					<div class="heroes">
+                        <h2>Choose your hero:</h2>
+                        <div class="animals-btns">
+                            <div class="animal-btn dog"></div>
+                            <div class="animal-btn seal"></div>
+                            <div class="animal-btn dino"></div>
+                        </div>
+                    </div>
+					<div class="backgrounds">
+                        <h2>Choose your location:</h2>
+                        <div class="background-btns">
+                            <div class="background-btn forest"><p>Forest</p></div>
+                            <div class="background-btn cave"><p>Cave</p></div>
+                            <div class="background-btn iceland"><p>Iceland</p></div>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>
