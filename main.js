@@ -8,6 +8,11 @@ const pipesDiv = document.querySelector('.pipes')
 const pipeBottom = document.querySelector('.bottom')
 const pipeTop = document.querySelector('.top')
 const scoreElement = document.querySelector('.score')
+const settings = document.querySelector('.settings')
+const settingsBtn = document.querySelector('.settings-btn')
+const closeBtn = document.querySelector('.close-btn')
+const animalBtns = document.querySelectorAll('.animal-btn')
+
 class Game {
 	posX = 30
 	posY = 240
@@ -22,8 +27,8 @@ class Game {
 	// pipeTopX = 0
 	// pipeBottomY = 0
 	// pipeBottomX = 0
-	animalHeight = 43
-	animalWidth = 38
+	animalHeight = 45
+	animalWidth = 45
 	pipeWidth = 47
 	pipeHeight = 382
 	pipesGap = 120
@@ -70,12 +75,6 @@ class Game {
 			},
 		})
 	}
-	// createNewPipeTop = () => {
-	// 	const divPipeTop = document.createElement('div')
-	// 	divPipeTop.classList.add('top')
-
-	// 	pipesDiv.appendChild(divPipeTop)
-	// }
 
 	updateGame = () => {
 		this.addGravity()
@@ -183,5 +182,35 @@ class Game {
 		this.posY -= 30
 	}
 }
+
+const showSettings = () => {
+	if (!(settings.style.display === 'flex')) {
+		settings.style.display = 'flex'
+		settings.classList.add('settings-show')
+		settings.classList.remove('settings-close')
+	}
+	//  else {
+	// 	settings.style.display = 'none'
+	// 	settings.classList.add('settings-close')
+	// }
+}
+const closeSettings = () => {
+	if (!(settings.style.display === 'none')) {
+		settings.style.display = 'none'
+		settings.classList.add('settings-close')
+		settings.classList.remove('settings-show')
+	}
+}
+
+const chooseAnimal = e => {
+	if (e.target.matches('.animal-btn')) {
+		animalBtns.forEach(btn => btn.classList.remove('active-animal'))
+		e.target.classList.add('active-animal')
+	}
+}
+
+animalBtns.forEach(btn => btn.addEventListener('click', chooseAnimal))
+settingsBtn.addEventListener('click', showSettings)
+closeBtn.addEventListener('click', closeSettings)
 
 const game = new Game()

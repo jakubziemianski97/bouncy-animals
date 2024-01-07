@@ -1,3 +1,6 @@
+@import 'colors';
+@import 'images';
+
 *,
 *::before,
 *::after {
@@ -5,6 +8,7 @@
 	margin: 0;
 	padding: 0;
 }
+
 body {
 	min-height: 100vh;
 	font-family: 'Architects Daughter', cursive;
@@ -46,21 +50,21 @@ body {
 	width: 100%;
 	height: 100%;
 	background-size: cover;
-	background-image: url('/images/bg/bg1.png');
+	background-image: $forest;
 }
 .background-shadow {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: $shadow;
 }
 .animal {
 	position: absolute;
-	height: 43px;
-	width: 38px;
+	height: 45px;
+	width: 45px;
 	top: 240px;
 	left: 30px;
-	background-image: url('/images/bird.png');
+	background-image: $dog;
 }
 .bottom {
 	position: absolute;
@@ -79,7 +83,7 @@ body {
 	top: 18px;
 	left: 25px;
 	font-size: 40px;
-	color: #fff;
+	color: $light;
 	p {
 		padding-right: 5px;
 	}
@@ -91,34 +95,47 @@ button {
 	right: 25px;
 	padding: 5px;
 	font-size: 22px;
-	background-color: #fef9eb;
-	border: 1px solid black;
+	background-color: $light;
+	border: 1px solid $black;
 	border-radius: 8px;
 	cursor: pointer;
-	transition: 0.3s;
-	z-index: 100;
+	transition: box-shadow 0.3s, scale 0.3s;
+}
+button:hover {
+	box-shadow: 0px 0px 10px $light;
+	scale: 0.95;
 }
 
 .settings {
 	position: absolute;
-	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 	height: 100%;
 	width: 100%;
 	top: 0;
+	left: 0;
 	padding: 50px 30px;
-	background-color: #fef9eb;
-	border: 2px solid black;
-	border-radius: 18px;
-	opacity: 1;
-	// clip-path: circle(0 at 90% 8%);
-	// transition: clip-path 0.8s;
+	background-color: $light;
+	border-radius: 16px;
+	display: flex;
 	h1 {
 		display: flex;
 		font-size: 45px;
 		text-transform: uppercase;
+	}
+	.close-btn {
+		font-size: 25px;
+		justify-content: center;
+		align-items: center;
+		width: 34px;
+		height: 34px;
+		font-family: 'Architects Daughter', cursive;
+		transition: box-shadow 0.3s, scale 0.3s;
+	}
+	.close-btn:hover {
+		box-shadow: 0 0 10px $black;
+		scale: 0.95;
 	}
 	.heroes {
 		display: flex;
@@ -132,19 +149,25 @@ button {
 			padding: 5%;
 		}
 		.animals-btns {
-			// position: relative;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-around;
 			align-items: center;
-			// border-bottom: 2px solid lightgrey;
-			// padding-bottom: 5%;
 			.animal-btn {
-				width: 60px;
-				height: 60px;
+				width: 70px;
+				height: 70px;
 				border: 1px solid black;
 				border-radius: 8px;
 				transition: scale 0.3s;
+				background-size: 90%;
+				background-position: center;
+				background-repeat: no-repeat; // margin: 5px;
+			}
+			.dog {
+				background-image: $dog;
+			}
+			.active-animal {
+				box-shadow: 0 0 10px $black;
 			}
 		}
 	}
@@ -153,7 +176,7 @@ button {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		border-top: 2px solid lightgray;
+		border-top: 2px solid $light-gray;
 		h2 {
 			display: flex;
 			justify-content: center;
@@ -161,7 +184,6 @@ button {
 			padding: 5%;
 		}
 		.background-btns {
-			// position: relative;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-around;
@@ -174,7 +196,7 @@ button {
 				padding: 10px;
 				width: 90px;
 				font-size: 20px;
-				border: 1px solid black;
+				border: 1px solid $black;
 				border-radius: 8px;
 				transition: scale 0.3s;
 			}
@@ -187,10 +209,31 @@ button {
 	scale: 0.9;
 }
 
-button:hover {
-	box-shadow: 0px 0px 10px #fff;
-	scale: 0.95;
+.settings-show {
+	animation: show-settings 0.5s;
 }
-button:hover ~ .settings {
-	clip-path: circle(140% at 90% 8%);
+
+@keyframes show-settings {
+	0% {
+		clip-path: circle(0 at 90% 8%);
+		display: none;
+	}
+	100% {
+		clip-path: circle(140% at 90% 8%);
+		display: flex;
+	}
+}
+.settings-close {
+	animation: close-settings 0.5s;
+}
+
+@keyframes close-settings {
+	0% {
+		clip-path: circle(140% at 90% 8%);
+		display: flex;
+	}
+	100% {
+		clip-path: circle(0 at 90% 8%);
+		display: none;
+	}
 }
