@@ -12,6 +12,13 @@ const settings = document.querySelector('.settings')
 const settingsBtn = document.querySelector('.settings-btn')
 const closeBtn = document.querySelector('.close-btn')
 const animalBtns = document.querySelectorAll('.animal-btn')
+const backgroundBtns = document.querySelectorAll('.background-btn')
+const background = document.querySelector('.background')
+const forest = document.querySelector('.forest')
+const cave = document.querySelector('.cave')
+const iceland = document.querySelector('.iceland')
+const activeBackground = document.querySelector('.active-background')
+const bgiDiv = document.querySelector('.background-btns div')
 
 class Game {
 	posX = 30
@@ -202,14 +209,32 @@ const closeSettings = () => {
 	}
 }
 
-const chooseAnimal = e => {
+const selectAnimal = e => {
 	if (e.target.matches('.animal-btn')) {
 		animalBtns.forEach(btn => btn.classList.remove('active-animal'))
 		e.target.classList.add('active-animal')
 	}
 }
+const selectBackground = e => {
+	if (e.target.matches('.background-btn')) {
+		backgroundBtns.forEach(btn => btn.classList.remove('active-background'))
+		e.target.classList.add('active-background')
+	}
+	chooseBackground(e)
+}
 
-animalBtns.forEach(btn => btn.addEventListener('click', chooseAnimal))
+const chooseBackground = e => {
+	if (e.target.matches('.forest')) {
+		background.style.backgroundImage = '$forest'
+	} else if (e.target.matches('.cave')) {
+		background.style.backgroundImage = '$cave)'
+	} else if (e.target.matches('.iceland')) {
+		background.style.backgroundImage = '$iceland'
+	}
+}
+
+backgroundBtns.forEach(btn => btn.addEventListener('click', selectBackground))
+animalBtns.forEach(btn => btn.addEventListener('click', selectAnimal))
 settingsBtn.addEventListener('click', showSettings)
 closeBtn.addEventListener('click', closeSettings)
 
