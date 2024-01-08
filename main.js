@@ -17,8 +17,6 @@ const background = document.querySelector('.background')
 const forest = document.querySelector('.forest')
 const cave = document.querySelector('.cave')
 const iceland = document.querySelector('.iceland')
-const activeBackground = document.querySelector('.active-background')
-const bgiDiv = document.querySelector('.background-btns div')
 
 class Game {
 	posX = 30
@@ -26,19 +24,15 @@ class Game {
 	gravity = 1.5
 	score = 0
 
-	pipes = []
-	pipeTopImg = getComputedStyle(pipeTop).backgroundImage
+	animalHeight = 50
+	animalWidth = 50
 
-	pipeBottomImg = getComputedStyle(pipeBottom).backgroundImage
-	// pipeTopY = 0
-	// pipeTopX = 0
-	// pipeBottomY = 0
-	// pipeBottomX = 0
-	animalHeight = 45
-	animalWidth = 45
+	pipes = []
 	pipeWidth = 47
 	pipeHeight = 382
-	pipesGap = 120
+	pipesGap = 135
+	pipeTopImg = getComputedStyle(pipeTop).backgroundImage
+	pipeBottomImg = getComputedStyle(pipeBottom).backgroundImage
 
 	gameFieldWidth = gameField.offsetWidth
 	gameFieldHeight = gameField.offsetHeight
@@ -56,8 +50,6 @@ class Game {
 	startGame = () => {
 		const fps = 60
 		// setInterval(this.updateGame, 1000 / fps)
-		// setInterval(this.updateGame, 1)
-
 		this.addPipe()
 	}
 
@@ -87,8 +79,6 @@ class Game {
 		this.addGravity()
 		this.checkCollision()
 		this.render()
-
-		// console.log(game.pipes)
 	}
 
 	addGravity = () => {
@@ -137,7 +127,7 @@ class Game {
 		scoreElement.textContent = '0'
 
 		this.pipes = []
-		this.pipesGap = 120
+		this.pipesGap = 135
 
 		this.addPipe()
 	}
@@ -196,10 +186,6 @@ const showSettings = () => {
 		settings.classList.add('settings-show')
 		settings.classList.remove('settings-close')
 	}
-	//  else {
-	// 	settings.style.display = 'none'
-	// 	settings.classList.add('settings-close')
-	// }
 }
 const closeSettings = () => {
 	if (!(settings.style.display === 'none')) {
@@ -219,17 +205,13 @@ const selectBackground = e => {
 	if (e.target.matches('.background-btn')) {
 		backgroundBtns.forEach(btn => btn.classList.remove('active-background'))
 		e.target.classList.add('active-background')
-	}
-	chooseBackground(e)
-}
-
-const chooseBackground = e => {
-	if (e.target.matches('.forest')) {
-		background.style.backgroundImage = '$forest'
-	} else if (e.target.matches('.cave')) {
-		background.style.backgroundImage = '$cave)'
-	} else if (e.target.matches('.iceland')) {
-		background.style.backgroundImage = '$iceland'
+		if (e.target.matches('.forest')) {
+			background.style.backgroundImage = `url(/images/bg/bg1.png)`
+		} else if (e.target.matches('.cave')) {
+			background.style.backgroundImage = `url(/images/bg/bg2.png)`
+		} else if (e.target.matches('.iceland')) {
+			background.style.backgroundImage = `url(/images/bg/bg3.png)`
+		}
 	}
 }
 

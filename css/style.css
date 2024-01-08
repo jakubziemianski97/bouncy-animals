@@ -6,12 +6,6 @@
   padding: 0;
 }
 
-:root {
-  --forest: url("/images/bg/bg1.png");
-  --cave: url("/images/bg/bg2.png");
-  --iceland: url("/images/bg/bg3.png");
-}
-
 body {
   min-height: 100vh;
   font-family: "Architects Daughter", cursive;
@@ -39,7 +33,7 @@ body {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-image: var(--forest);
+  background-image: url("/images/bg/bg1.png");
 }
 
 .background-shadow {
@@ -51,11 +45,11 @@ body {
 
 .animal {
   position: absolute;
-  height: 45px;
-  width: 45px;
+  height: 50px;
+  width: 50px;
   top: 240px;
   left: 30px;
-  background-image: url("/images/animal1.png");
+  background-image: url("/images/animal3.png");
 }
 
 .bottom {
@@ -114,7 +108,7 @@ button:hover {
   padding: 50px 30px;
   background-color: rgb(254, 249, 235);
   border-radius: 16px;
-  display: flex;
+  display: none;
 }
 .settings h1 {
   display: flex;
@@ -165,6 +159,12 @@ button:hover {
 }
 .settings .heroes .animals-btns .dog {
   background-image: url("/images/animal1.png");
+}
+.settings .heroes .animals-btns .seal {
+  background-image: url("/images/animal2.png");
+}
+.settings .heroes .animals-btns .dino {
+  background-image: url("/images/animal3.png");
 }
 .settings .heroes .animals-btns .active-animal {
   box-shadow: 0 0 10px rgb(0, 0, 0);
