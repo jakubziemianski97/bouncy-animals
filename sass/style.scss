@@ -8,11 +8,6 @@
 	margin: 0;
 	padding: 0;
 }
-// :root {
-// // 	--forest: url('/images/bg/bg1.png');
-// // 	--cave: url('/images/bg/bg2.png');
-// // 	--iceland: url('/images/bg/bg3.png');
-// // }
 
 body {
 	min-height: 100vh;
@@ -69,18 +64,18 @@ body {
 	width: 50px;
 	top: 240px;
 	left: 30px;
-	background-image: $dino;
+	background-image: $dog;
 }
 .bottom {
 	position: absolute;
 	width: 47px;
-	background-image: url('/images/pipeBottom.png');
+	background-image: $woodPipe;
 }
 .top {
 	position: absolute;
 	width: 47px;
 	transform: rotate(180deg);
-	background-image: url('/images/pipeTop.png');
+	background-image: $woodPipe;
 }
 .result {
 	position: absolute;
@@ -172,8 +167,8 @@ button:hover {
 			.dog {
 				background-image: $dog;
 			}
-			.seal {
-				background-image: $seal;
+			.bear {
+				background-image: $bear;
 			}
 			.dino {
 				background-image: $dino;

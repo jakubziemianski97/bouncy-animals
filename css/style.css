@@ -40,7 +40,7 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .animal {
@@ -49,20 +49,20 @@ body {
   width: 50px;
   top: 240px;
   left: 30px;
-  background-image: url("/images/animal3.png");
+  background-image: url("/images/animals/animal1.png");
 }
 
 .bottom {
   position: absolute;
   width: 47px;
-  background-image: url("/images/pipeBottom.png");
+  background-image: url("/images/pipe1.png");
 }
 
 .top {
   position: absolute;
   width: 47px;
   transform: rotate(180deg);
-  background-image: url("/images/pipeTop.png");
+  background-image: url("/images/pipe1.png");
 }
 
 .result {
@@ -158,13 +158,13 @@ button:hover {
   cursor: pointer;
 }
 .settings .heroes .animals-btns .dog {
-  background-image: url("/images/animal1.png");
+  background-image: url("/images/animals/animal1.png");
 }
-.settings .heroes .animals-btns .seal {
-  background-image: url("/images/animal2.png");
+.settings .heroes .animals-btns .bear {
+  background-image: url("/images/animals/animal2.png");
 }
 .settings .heroes .animals-btns .dino {
-  background-image: url("/images/animal3.png");
+  background-image: url("/images/animals/animal3.png");
 }
 .settings .heroes .animals-btns .active-animal {
   box-shadow: 0 0 10px rgb(0, 0, 0);

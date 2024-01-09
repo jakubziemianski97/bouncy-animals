@@ -49,7 +49,7 @@ class Game {
 
 	startGame = () => {
 		const fps = 60
-		// setInterval(this.updateGame, 1000 / fps)
+		setInterval(this.updateGame, 1000 / fps)
 		this.addPipe()
 	}
 
@@ -199,6 +199,13 @@ const selectAnimal = e => {
 	if (e.target.matches('.animal-btn')) {
 		animalBtns.forEach(btn => btn.classList.remove('active-animal'))
 		e.target.classList.add('active-animal')
+		if (e.target.matches('.dog')) {
+			animal.style.backgroundImage = `url(/images/animals/animal1.png)`
+		} else if (e.target.matches('.bear')) {
+			animal.style.backgroundImage = `url(/images/animals/animal2.png)`
+		} else if (e.target.matches('.dino')) {
+			animal.style.backgroundImage = `url(/images/animals/animal3.png)`
+		}
 	}
 }
 const selectBackground = e => {
@@ -207,10 +214,16 @@ const selectBackground = e => {
 		e.target.classList.add('active-background')
 		if (e.target.matches('.forest')) {
 			background.style.backgroundImage = `url(/images/bg/bg1.png)`
+			bottom.style.backgroundImage = `url(/images/pipe1.png)`
+			top.style.backgroundImage = `url(/images/pipe1.png)`
 		} else if (e.target.matches('.cave')) {
 			background.style.backgroundImage = `url(/images/bg/bg2.png)`
+			bottom.style.backgroundImage = `url(/images/pipeBottom.png)`
+			top.style.backgroundImage = `url(/images/pipeBottom.png)`
 		} else if (e.target.matches('.iceland')) {
 			background.style.backgroundImage = `url(/images/bg/bg3.png)`
+			bottom.style.backgroundImage = `url(/images/pipe3.png)`
+			top.style.backgroundImage = `url(/images/pipe3.png)`
 		}
 	}
 }
