@@ -214,16 +214,16 @@ const selectBackground = e => {
 		e.target.classList.add('active-background')
 		if (e.target.matches('.forest')) {
 			background.style.backgroundImage = `url(/images/bg/bg1.png)`
-			bottom.style.backgroundImage = `url(/images/pipe1.png)`
-			top.style.backgroundImage = `url(/images/pipe1.png)`
+			pipeBottom.style.backgroundImage = `url(/images/pipe1.png)`
+			pipeTop.style.backgroundImage = `url(/images/pipe1.png)`
 		} else if (e.target.matches('.cave')) {
 			background.style.backgroundImage = `url(/images/bg/bg2.png)`
-			bottom.style.backgroundImage = `url(/images/pipeBottom.png)`
-			top.style.backgroundImage = `url(/images/pipeBottom.png)`
+			pipeBottom.style.backgroundImage = `url(/images/pipeBottom.png)`
+			pipeTop.style.backgroundImage = `url(/images/pipeBottom.png)`
 		} else if (e.target.matches('.iceland')) {
 			background.style.backgroundImage = `url(/images/bg/bg3.png)`
-			bottom.style.backgroundImage = `url(/images/pipe3.png)`
-			top.style.backgroundImage = `url(/images/pipe3.png)`
+			pipeBottom.style.backgroundImage = `url(/images/pipe3.png)`
+			pipeTop.style.backgroundImage = `url(/images/pipe3.png)`
 		}
 	}
 }
