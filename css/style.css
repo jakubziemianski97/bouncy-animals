@@ -55,14 +55,14 @@ body {
 .bottom {
   position: absolute;
   width: 47px;
-  background-image: url("/images/pipe1.png");
+  background-image: url("/images/pipeBottom.png");
 }
 
 .top {
   position: absolute;
   width: 47px;
   transform: rotate(180deg);
-  background-image: url("/images/pipe1.png");
+  background-image: url("/images/pipeBottom.png");
 }
 
 .result {
