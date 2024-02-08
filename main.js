@@ -24,13 +24,13 @@ class Game {
 	gravity = 1.5
 	score = 0
 
-	animalHeight = 50
-	animalWidth = 50
+	animalHeight = 30
+	animalWidth = 40
 
 	pipes = []
 	pipeWidth = 47
 	pipeHeight = 382
-	pipesGap = 135
+	pipesGap = 145
 	pipeTopImg = getComputedStyle(pipeTop).backgroundImage
 	pipeBottomImg = getComputedStyle(pipeBottom).backgroundImage
 
@@ -44,7 +44,6 @@ class Game {
 				this.moveUp()
 			}
 		})
-		this.startGame()
 	}
 
 	startGame = () => {
@@ -97,8 +96,8 @@ class Game {
 		const pipesToCheck = [...this.pipes]
 		const animalX = this.posX
 		const animalY = this.posY
-		const animalW = this.animalHeight
-		const animalH = this.animalWidth
+		const animalW = this.animalWidth
+		const animalH = this.animalHeight
 
 		pipesToCheck.forEach(pipe => {
 			if (animalX + animalW > pipe.top.x && animalX <= pipe.top.x + pipe.top.width) {
@@ -142,8 +141,8 @@ class Game {
 		const pipesToDraw = [...this.pipes]
 
 		pipesToDraw.forEach(pipe => {
-			const createNewPipeTop = document.createElement('div')
-			const createNewPipeBottom = document.createElement('div')
+			let createNewPipeTop = document.createElement('div')
+			let createNewPipeBottom = document.createElement('div')
 
 			createNewPipeTop.classList.add('top')
 			createNewPipeBottom.classList.add('bottom')
@@ -227,6 +226,15 @@ const selectBackground = e => {
 		}
 	}
 }
+
+const startGameBtn = document.querySelector('.start-btn')
+const instruction = document.querySelector('.instruction')
+
+startGameBtn.addEventListener('click', () => {
+	game.startGame()
+	instruction.style.opacity = '0'
+	game.posY = 240
+})
 
 backgroundBtns.forEach(btn => btn.addEventListener('click', selectBackground))
 animalBtns.forEach(btn => btn.addEventListener('click', selectAnimal))

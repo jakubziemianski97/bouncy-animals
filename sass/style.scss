@@ -69,13 +69,13 @@ body {
 .bottom {
 	position: absolute;
 	width: 47px;
-	background-image: $classicPipe;
+	background-image: $woodPipe;
 }
 .top {
 	position: absolute;
 	width: 47px;
 	transform: rotate(180deg);
-	background-image: $classicPipe;
+	background-image: $woodPipe;
 }
 .result {
 	position: absolute;
@@ -84,6 +84,7 @@ body {
 	left: 25px;
 	font-size: 40px;
 	color: $light;
+	user-select: none;
 	p {
 		padding-right: 5px;
 	}
@@ -100,6 +101,7 @@ button {
 	border-radius: 8px;
 	cursor: pointer;
 	transition: box-shadow 0.3s, scale 0.3s;
+	z-index: 101;
 }
 button:hover {
 	box-shadow: 0px 0px 10px $light;
@@ -119,6 +121,7 @@ button:hover {
 	background-color: $light;
 	border-radius: 16px;
 	display: none;
+	z-index: 120;
 	h1 {
 		display: flex;
 		font-size: 45px;
@@ -214,6 +217,127 @@ button:hover {
 		}
 	}
 }
+
+.arrow {
+	position: absolute;
+	z-index: 100;
+	img {
+		height: 40px;
+		width: 50px;
+	}
+}
+.instruction-text {
+	position: absolute;
+	font-size: 24px;
+	z-index: 100;
+}
+
+.instruction {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: $dark-shadow;
+
+	.arrow-result {
+		top: 65px;
+		left: 50px;
+		rotate: 45deg;
+	}
+	.instruction-result {
+		top: 100px;
+		left: 20px;
+		width: 120px;
+	}
+
+	.arrow-settings {
+		top: 65px;
+		right: 40px;
+		rotate: 30deg;
+	}
+	.instruction-settings {
+		top: 80px;
+		right: 50px;
+		width: 145px;
+	}
+
+	.arrow-pipes {
+		top: 280px;
+		right: 30px;
+		rotate: 70deg;
+	}
+	.instruction-pipes {
+		top: 250px;
+		right: 60px;
+		width: 120px;
+	}
+
+	.arrow-hero {
+		top: 300px;
+		left: 50px;
+		rotate: 330deg;
+		height: 30px;
+	}
+	.instruction-hero {
+		top: 340px;
+		left: 40px;
+		width: 140px;
+	}
+
+	.result-black {
+		position: absolute;
+		display: flex;
+		top: 18px;
+		left: 25px;
+		font-size: 40px;
+		color: $black;
+		z-index: 100;
+		p {
+			padding-right: 5px;
+		}
+
+		.instruction-result {
+			top: 90px;
+		}
+	}
+	.instruction-pipes {
+		.pipe-top {
+			position: absolute;
+			z-index: 100;
+			right: -12px;
+			bottom: -250px;
+		}
+		.pipe-bottom {
+			position: absolute;
+			z-index: 100;
+			right: -12px;
+			bottom: 300px;
+			transform: rotate(180deg);
+		}
+	}
+	.start-btn {
+		position: absolute;
+		display: flex;
+		bottom: 25px;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 10px 20px;
+		font-size: 22px;
+		background-color: $black;
+		color: $light;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: border 0.3s, color 0.3s, background-color 0.3s, box-shadow 0.3s;
+		z-index: 101;
+		border: 1px solid $light;
+	}
+	.start-btn:hover {
+		background-color: $light;
+		color: $black;
+		border: 1px solid $black;
+		box-shadow: inset 0 0 5px 0 $black;
+	}
+}
+
 .animal-btn:hover,
 .background-btn:hover {
 	// box-shadow: 0 0 10px rgb(83, 83, 83);

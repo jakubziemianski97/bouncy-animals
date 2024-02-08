@@ -55,14 +55,14 @@ body {
 .bottom {
   position: absolute;
   width: 47px;
-  background-image: url("/images/pipeBottom.png");
+  background-image: url("/images/pipe1.png");
 }
 
 .top {
   position: absolute;
   width: 47px;
   transform: rotate(180deg);
-  background-image: url("/images/pipeBottom.png");
+  background-image: url("/images/pipe1.png");
 }
 
 .result {
@@ -72,6 +72,9 @@ body {
   left: 25px;
   font-size: 40px;
   color: rgb(254, 249, 235);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .result p {
   padding-right: 5px;
@@ -89,6 +92,7 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: box-shadow 0.3s, scale 0.3s;
+  z-index: 101;
 }
 
 button:hover {
@@ -109,6 +113,7 @@ button:hover {
   background-color: rgb(254, 249, 235);
   border-radius: 16px;
   display: none;
+  z-index: 120;
 }
 .settings h1 {
   display: flex;
@@ -202,6 +207,119 @@ button:hover {
 }
 .settings .backgrounds .background-btns .active-background {
   box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.arrow {
+  position: absolute;
+  z-index: 100;
+}
+.arrow img {
+  height: 40px;
+  width: 50px;
+}
+
+.instruction-text {
+  position: absolute;
+  font-size: 24px;
+  z-index: 100;
+}
+
+.instruction {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.instruction .arrow-result {
+  top: 65px;
+  left: 50px;
+  rotate: 45deg;
+}
+.instruction .instruction-result {
+  top: 100px;
+  left: 20px;
+  width: 120px;
+}
+.instruction .arrow-settings {
+  top: 65px;
+  right: 40px;
+  rotate: 30deg;
+}
+.instruction .instruction-settings {
+  top: 80px;
+  right: 50px;
+  width: 145px;
+}
+.instruction .arrow-pipes {
+  top: 280px;
+  right: 30px;
+  rotate: 70deg;
+}
+.instruction .instruction-pipes {
+  top: 250px;
+  right: 60px;
+  width: 120px;
+}
+.instruction .arrow-hero {
+  top: 300px;
+  left: 50px;
+  rotate: 330deg;
+  height: 30px;
+}
+.instruction .instruction-hero {
+  top: 340px;
+  left: 40px;
+  width: 140px;
+}
+.instruction .result-black {
+  position: absolute;
+  display: flex;
+  top: 18px;
+  left: 25px;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  z-index: 100;
+}
+.instruction .result-black p {
+  padding-right: 5px;
+}
+.instruction .result-black .instruction-result {
+  top: 90px;
+}
+.instruction .instruction-pipes .pipe-top {
+  position: absolute;
+  z-index: 100;
+  right: -12px;
+  bottom: -250px;
+}
+.instruction .instruction-pipes .pipe-bottom {
+  position: absolute;
+  z-index: 100;
+  right: -12px;
+  bottom: 300px;
+  transform: rotate(180deg);
+}
+.instruction .start-btn {
+  position: absolute;
+  display: flex;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 22px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(254, 249, 235);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border 0.3s, color 0.3s, background-color 0.3s, box-shadow 0.3s;
+  z-index: 101;
+  border: 1px solid rgb(254, 249, 235);
+}
+.instruction .start-btn:hover {
+  background-color: rgb(254, 249, 235);
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  box-shadow: inset 0 0 5px 0 rgb(0, 0, 0);
 }
 
 .animal-btn:hover,
