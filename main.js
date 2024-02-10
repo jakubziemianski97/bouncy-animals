@@ -17,6 +17,7 @@ const background = document.querySelector('.background')
 const forest = document.querySelector('.forest')
 const cave = document.querySelector('.cave')
 const iceland = document.querySelector('.iceland')
+let pipeImg = "url('/images/pipe1.png')"
 
 class Game {
 	posX = 30
@@ -149,11 +150,11 @@ class Game {
 
 			createNewPipeTop.style.top = pipe.top.y + 'px'
 			createNewPipeTop.style.height = pipe.top.height + 'px'
-			createNewPipeTop.style.backgroundImage = getComputedStyle(pipeTop).backgroundImage
+			createNewPipeTop.style.backgroundImage = pipeImg
 
 			createNewPipeBottom.style.top = pipe.bottom.y + 'px'
 			createNewPipeBottom.style.height = pipe.bottom.height + 'px'
-			createNewPipeBottom.style.backgroundImage = getComputedStyle(pipeBottom).backgroundImage
+			createNewPipeBottom.style.backgroundImage = pipeImg
 
 			pipeTop.style.left = --pipe.top.x + 'px'
 			pipeBottom.style.left = --pipe.bottom.x + 'px'
@@ -213,16 +214,13 @@ const selectBackground = e => {
 		e.target.classList.add('active-background')
 		if (e.target.matches('.forest')) {
 			background.style.backgroundImage = `url(/images/bg/bg1.png)`
-			pipeBottom.style.backgroundImage = `url(/images/pipe1.png)`
-			pipeTop.style.backgroundImage = `url(/images/pipe1.png)`
+			pipeImg = `url(/images/pipe1.png)`
 		} else if (e.target.matches('.cave')) {
 			background.style.backgroundImage = `url(/images/bg/bg2.png)`
-			pipeBottom.style.backgroundImage = `url(/images/pipeBottom.png)`
-			pipeTop.style.backgroundImage = `url(/images/pipeBottom.png)`
+			pipeImg = `url(/images/pipeBottom.png)`
 		} else if (e.target.matches('.iceland')) {
 			background.style.backgroundImage = `url(/images/bg/bg3.png)`
-			pipeBottom.style.backgroundImage = `url(/images/pipe3.png)`
-			pipeTop.style.backgroundImage = `url(/images/pipe3.png)`
+			pipeImg = `url(/images/pipe3.png)`
 		}
 	}
 }
