@@ -22,7 +22,15 @@ let pipeImg = "url('/images/pipe1.png')"
 class Game {
 	posX = 30
 	posY = 240
-	gravity = 1.5
+	// gravity = 1.5
+	initialGravity = 1.0
+	gravityIncrement1 = 0.1
+	gravityIncrement2 = 0.2
+	gravityIncrement3 = 0.3
+	maxGravity = 3.4
+	currentGravity = this.initialGravity
+	gameStarted = false
+
 	score = 0
 
 	animalHeight = 30
@@ -32,8 +40,6 @@ class Game {
 	pipeWidth = 47
 	pipeHeight = 382
 	pipesGap = 145
-	pipeTopImg = getComputedStyle(pipeTop).backgroundImage
-	pipeBottomImg = getComputedStyle(pipeBottom).backgroundImage
 
 	gameFieldWidth = gameField.offsetWidth
 	gameFieldHeight = gameField.offsetHeight
@@ -45,9 +51,12 @@ class Game {
 				this.moveUp()
 			}
 		})
+		setInterval(this.addGravity, 1000 / 60)
+		setInterval(this.increaseGravity, 100)
 	}
 
 	startGame = () => {
+		this.gameStarted = true
 		const fps = 60
 		setInterval(this.updateGame, 1000 / fps)
 		this.addPipe()
@@ -82,7 +91,18 @@ class Game {
 	}
 
 	addGravity = () => {
-		this.posY += this.gravity
+		this.posY += this.currentGravity
+	}
+
+	increaseGravity = () => {
+		if (this.currentGravity < 1.5) {
+			this.currentGravity += this.gravityIncrement1
+		} else if (this.currentGravity <= 2.5) {
+			this.currentGravity += this.gravityIncrement2
+		} else if (this.currentGravity <= this.maxGravity) {
+			this.currentGravity += this.gravityIncrement3
+		}
+		// console.log('New gravity:', this.currentGravity)
 	}
 
 	checkCollision = () => {
@@ -176,6 +196,7 @@ class Game {
 	}
 
 	moveUp = () => {
+		this.currentGravity = this.initialGravity
 		this.posY -= 30
 	}
 }
