@@ -22,14 +22,16 @@ let pipeImg = "url('/images/pipe1.png')"
 class Game {
 	posX = 30
 	posY = 240
-	// gravity = 1.5
 	initialGravity = 1.0
-	gravityIncrement1 = 0.1
-	gravityIncrement2 = 0.2
-	gravityIncrement3 = 0.3
-	maxGravity = 3.4
+	gravityIncrement1 = 0.2
+	gravityIncrement2 = 0.4
+	gravityIncrement3 = 0.8
+	maxGravity = 6
 	currentGravity = this.initialGravity
 	gameStarted = false
+
+	jumpStrength = 18 // Siła skoku
+	jumping = false
 
 	score = 0
 
@@ -89,9 +91,12 @@ class Game {
 		this.checkCollision()
 		this.render()
 	}
+	gravityEnabled = true
 
 	addGravity = () => {
-		this.posY += this.currentGravity
+		if (this.gravityEnabled) {
+			this.posY += this.currentGravity
+		}
 	}
 
 	increaseGravity = () => {
@@ -148,8 +153,9 @@ class Game {
 
 		this.pipes = []
 		this.pipesGap = 135
-
 		this.addPipe()
+
+		this.currentGravity = this.initialGravity
 	}
 
 	render = () => {
@@ -197,7 +203,25 @@ class Game {
 
 	moveUp = () => {
 		this.currentGravity = this.initialGravity
-		this.posY -= 30
+		if (this.gameStarted && !this.jumping) {
+			this.jumping = true
+			this.gravityEnabled = false // Zatrzymaj grawitację
+			this.jump()
+		}
+	}
+
+	jump = () => {
+		let jumpHeight = 0
+		const jumpInterval = setInterval(() => {
+			this.posY -= this.jumpStrength - jumpHeight
+			jumpHeight += 5
+
+			if (jumpHeight >= this.jumpStrength) {
+				clearInterval(jumpInterval)
+				this.jumping = false
+				this.gravityEnabled = true // Wznów grawitację po skoku
+			}
+		}, 16) // Około 60 klatek na sekundę
 	}
 }
 
