@@ -35,13 +35,13 @@ class Game {
 
 	score = 0
 
-	animalHeight = 30
+	animalHeight = 40
 	animalWidth = 40
 
 	pipes = []
 	pipeWidth = 47
 	pipeHeight = 382
-	pipesGap = 145
+	pipesGap = 155
 
 	gameFieldWidth = gameField.offsetWidth
 	gameFieldHeight = gameField.offsetHeight
