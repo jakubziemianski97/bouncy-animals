@@ -214,7 +214,7 @@ class Game {
 		let jumpHeight = 0
 		const jumpInterval = setInterval(() => {
 			this.posY -= this.jumpStrength - jumpHeight
-			jumpHeight += 5
+			jumpHeight += 4
 
 			if (jumpHeight >= this.jumpStrength) {
 				clearInterval(jumpInterval)
