@@ -9,6 +9,8 @@ const pipeBottom = document.querySelector('.bottom')
 const pipeTop = document.querySelector('.top')
 const scoreElement = document.querySelector('.score')
 const settings = document.querySelector('.settings')
+const startGameBtn = document.querySelector('.start-btn')
+const instruction = document.querySelector('.instruction')
 const settingsBtn = document.querySelector('.settings-btn')
 const closeBtn = document.querySelector('.close-btn')
 const animalBtns = document.querySelectorAll('.animal-btn')
@@ -30,7 +32,7 @@ class Game {
 	currentGravity = this.initialGravity
 	gameStarted = false
 
-	jumpStrength = 18 // Siła skoku
+	jumpStrength = 18
 	jumping = false
 
 	score = 0
@@ -46,6 +48,7 @@ class Game {
 	gameFieldWidth = gameField.offsetWidth
 	gameFieldHeight = gameField.offsetHeight
 
+	// GAME INITIALIZATION
 	init = () => {
 		document.addEventListener('click', this.moveUp)
 		document.addEventListener('keydown', e => {
@@ -57,6 +60,7 @@ class Game {
 		setInterval(this.increaseGravity, 100)
 	}
 
+	// GAME START
 	startGame = () => {
 		this.gameStarted = true
 		const fps = 60
@@ -64,6 +68,7 @@ class Game {
 		this.addPipe()
 	}
 
+	// PIPES GENERATION
 	addPipe = () => {
 		let x = this.gameFieldWidth
 		let y = Math.floor(Math.random() * this.pipeHeight) - this.pipeHeight
@@ -86,6 +91,7 @@ class Game {
 		})
 	}
 
+	// GAME UPDATE
 	updateGame = () => {
 		this.addGravity()
 		this.checkCollision()
@@ -93,12 +99,14 @@ class Game {
 	}
 	gravityEnabled = true
 
+	// ADDING GRAVITY
 	addGravity = () => {
 		if (this.gravityEnabled) {
 			this.posY += this.currentGravity
 		}
 	}
 
+	// INCREASING GRAVITY OVER TIME TO MAKE IT LOOK NATURAL
 	increaseGravity = () => {
 		if (this.currentGravity < 1.5) {
 			this.currentGravity += this.gravityIncrement1
@@ -107,9 +115,9 @@ class Game {
 		} else if (this.currentGravity <= this.maxGravity) {
 			this.currentGravity += this.gravityIncrement3
 		}
-		// console.log('New gravity:', this.currentGravity)
 	}
 
+	// CHECKING THE PIPE HIT
 	checkCollision = () => {
 		if (this.posY > this.gameFieldHeight - this.animalHeight) {
 			this.moveUp()
@@ -125,6 +133,7 @@ class Game {
 		const animalW = this.animalWidth
 		const animalH = this.animalHeight
 
+		// INCREASE IN SCORES
 		pipesToCheck.forEach(pipe => {
 			if (animalX + animalW > pipe.top.x && animalX <= pipe.top.x + pipe.top.width) {
 				if (animalY < pipe.top.y + pipe.top.height || animalY + animalH > pipe.bottom.y) {
@@ -145,6 +154,7 @@ class Game {
 		})
 	}
 
+	// RESETTING THE GAME AFTER HITTING THE PIPE
 	restart = () => {
 		this.posX = 30
 		this.posY = 240
@@ -158,10 +168,13 @@ class Game {
 		this.currentGravity = this.initialGravity
 	}
 
+	// APPEARANCE OF THE HERO AND PIPES
 	render = () => {
 		this.drawPipes()
 		animal.style.top = this.posY + 'px'
 	}
+
+	// GENERATION OF PIPES
 	drawPipes = () => {
 		pipesDiv.innerHTML = ''
 
@@ -201,11 +214,12 @@ class Game {
 		})
 	}
 
+	// HERO JUMP
 	moveUp = () => {
 		this.currentGravity = this.initialGravity
 		if (this.gameStarted && !this.jumping) {
 			this.jumping = true
-			this.gravityEnabled = false // Zatrzymaj grawitację
+			this.gravityEnabled = false
 			this.jump()
 		}
 	}
@@ -219,12 +233,13 @@ class Game {
 			if (jumpHeight >= this.jumpStrength) {
 				clearInterval(jumpInterval)
 				this.jumping = false
-				this.gravityEnabled = true // Wznów grawitację po skoku
+				this.gravityEnabled = true
 			}
-		}, 16) // Około 60 klatek na sekundę
+		}, 16)
 	}
 }
 
+// OPENING SETTINGS
 const showSettings = () => {
 	if (!(settings.style.display === 'flex')) {
 		settings.style.display = 'flex'
@@ -232,6 +247,8 @@ const showSettings = () => {
 		settings.classList.remove('settings-close')
 	}
 }
+
+// CLOSING SETTINGS
 const closeSettings = () => {
 	if (!(settings.style.display === 'none')) {
 		settings.style.display = 'none'
@@ -240,6 +257,7 @@ const closeSettings = () => {
 	}
 }
 
+// HERO SELECTION
 const selectAnimal = e => {
 	if (e.target.matches('.animal-btn')) {
 		animalBtns.forEach(btn => btn.classList.remove('active-animal'))
@@ -253,6 +271,8 @@ const selectAnimal = e => {
 		}
 	}
 }
+
+// BACKGROUND SELECTION
 const selectBackground = e => {
 	if (e.target.matches('.background-btn')) {
 		backgroundBtns.forEach(btn => btn.classList.remove('active-background'))
@@ -270,15 +290,14 @@ const selectBackground = e => {
 	}
 }
 
-const startGameBtn = document.querySelector('.start-btn')
-const instruction = document.querySelector('.instruction')
-
+// GAME START
 startGameBtn.addEventListener('click', () => {
 	game.startGame()
 	instruction.style.opacity = '0'
 	game.posY = 240
 })
 
+// FUNCTION CALL
 backgroundBtns.forEach(btn => btn.addEventListener('click', selectBackground))
 animalBtns.forEach(btn => btn.addEventListener('click', selectAnimal))
 settingsBtn.addEventListener('click', showSettings)
