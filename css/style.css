@@ -38,15 +38,15 @@ body {
 
 .background-shadow {
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
   background-color: rgba(255, 255, 255, 0.4);
 }
 
 .animal {
   position: absolute;
-  height: 50px;
   width: 50px;
+  height: 50px;
   top: 240px;
   left: 30px;
   background-image: url("/images/animals/animal1.png");
@@ -55,14 +55,14 @@ body {
 .bottom {
   position: absolute;
   width: 47px;
-  background-image: url("/images/pipe1.png");
+  background-image: url("/images/stumps/woodPipe.png");
 }
 
 .top {
   position: absolute;
   width: 47px;
   transform: rotate(180deg);
-  background-image: url("/images/pipe1.png");
+  background-image: url("/images/stumps/woodPipe.png");
 }
 
 .result {
@@ -83,9 +83,9 @@ body {
 button {
   position: absolute;
   display: flex;
+  padding: 5px;
   top: 25px;
   right: 25px;
-  padding: 5px;
   font-size: 22px;
   background-color: rgb(254, 249, 235);
   border: 1px solid rgb(0, 0, 0);
@@ -105,11 +105,11 @@ button:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
+  padding: 50px 30px;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  padding: 50px 30px;
   background-color: rgb(254, 249, 235);
   border-radius: 16px;
   display: none;
@@ -121,11 +121,11 @@ button:hover {
   text-transform: uppercase;
 }
 .settings .close-btn {
-  font-size: 25px;
   justify-content: center;
   align-items: center;
   width: 34px;
   height: 34px;
+  font-size: 25px;
   font-family: "Architects Daughter", cursive;
   transition: box-shadow 0.3s, scale 0.3s;
 }
@@ -302,13 +302,13 @@ button:hover {
 .instruction .start-btn {
   position: absolute;
   display: flex;
+  padding: 10px 20px;
   bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 10px 20px;
   font-size: 22px;
-  background-color: rgb(0, 0, 0);
   color: rgb(254, 249, 235);
+  background-color: rgb(0, 0, 0);
   border-radius: 8px;
   cursor: pointer;
   transition: border 0.3s, color 0.3s, background-color 0.3s, box-shadow 0.3s;
